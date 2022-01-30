@@ -42,27 +42,33 @@ console.log(maxSubarraySum(testData, 4))
 // Function should return the minimum length of continuous subarray of which the sum is greater than 
 // or equal to the integer passed to the function. if there's none, return 0 instead.
 
-function minSubarrayLen(arr, num) {
+function minSubArrayLen(arr, num) {
     // exit early if not enough elements in array
     if (arr.length === 0) {
         return 0;
     }
 
     // create storage variables
-    let j = 0
-    let min = 1;
-    let temp = arr[0];
+    let i = 0;
+    let j = 0;
+    let len = 1;
+    let min = Infinity;
+    let sum = arr[0];
     let found = false;
 
     // loop over the array moving the window, comparing consecutive sum and updating max if necessary
-    for (let i = 1; i < arr.length; i++) {
-        temp = temp + arr[i];
-        min++;
-        if (temp >= num) {
-            found = true;
-            temp = temp - arr[j];
+    while(j < arr.length) {
+        if (sum < num) {
             j++;
-            min--;
+            sum += arr[j];
+            len++;
+        }
+        else {
+            min = Math.min(len, min);
+            sum -= arr[i];
+            i++;
+            len--;
+            found = true;
         }
     }
 
@@ -74,4 +80,54 @@ function minSubarrayLen(arr, num) {
 }
 
 // driver code
-console.log("minSubarrayLen: ", minSubarrayLen([1,4,16,22,5,7,8,9,10], 39))
+console.log("minSubArrayLen: ", minSubArrayLen([1,4,16,22,5,7,8,9,10], 39))
+
+// ---------------------------------------------------------------------------------------------------------------------------
+// ---------------------------------------------------------------------------------------------------------------------------
+
+// Task: write a function called findLongestSubstring, which accepts a string
+// and returns the length of the longest substring with all distinct characters
+
+function findLongestSubstring(str){
+    // add whatever parameters you deem necessary - good luck!
+    // exit early if string short or empty
+    if (str.length < 2) {
+        return str.length;
+    }
+
+    // prepare variables
+    let index = {}; // object to store indexes of the characters in the string
+    let i = 0;
+    let j = 1;
+    let len = 1;
+    let max = 0;
+
+    // assign initial character indes
+    index[str[i]] = i;
+
+    // loop over the array and check characters. If character distinct (aka doesn't have index in object),
+    // increase length and add new character to the index. If character found in the object,
+    // move the beginning of the string to the next character, reset the object, and start counting again.
+    while (j < str.length) {
+        if (str[j] in index) {
+            i = index[str[j]] + 1;
+            j = i + 1;
+            len = 1;
+            index = {};
+            index[str[i]] = i;
+        }
+        else {
+            len = j - i + 1;
+            index[str[j]] = j;
+            j++;
+        }
+        // update max length of the substring everytime
+        max = Math.max(max, len);
+    }
+
+    // return result
+    return max;
+}
+
+// driver code
+console.log("findLongestSubstring: ", findLongestSubstring('thisisawesome'))
