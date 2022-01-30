@@ -44,22 +44,34 @@ console.log(maxSubarraySum(testData, 4))
 
 function minSubarrayLen(arr, num) {
     // exit early if not enough elements in array
-    if (arr.length < n) {
+    if (arr.length === 0) {
         return 0;
     }
 
     // create storage variables
-    let min = 0;
+    let j = 0
+    let min = 1;
     let temp = arr[0];
+    let found = false;
 
     // loop over the array moving the window, comparing consecutive sum and updating max if necessary
     for (let i = 1; i < arr.length; i++) {
-        temp = temp - arr[i];
+        temp = temp + arr[i];
+        min++;
         if (temp >= num) {
-            max = temp;
+            found = true;
+            temp = temp - arr[j];
+            j++;
+            min--;
         }
     }
 
     // return result
-    return 0;
+    if (!found) {
+        return 0;
+    }
+    return min;
 }
+
+// driver code
+console.log("minSubarrayLen: ", minSubarrayLen([1,4,16,22,5,7,8,9,10], 39))
