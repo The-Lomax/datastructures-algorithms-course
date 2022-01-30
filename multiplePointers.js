@@ -90,6 +90,10 @@ console.log("averagePair: ", averagePair([1,2,3,4,5,6,7,8,9], 12))
 // their order
 
 function isSubsequence(str1, str2) {
+    if (str1.length === 0 || str2.length === 0) {
+        return false;
+    }
+    
     let i = 0;
     
     for (let j = 0; j < str2.length; j++) {
@@ -104,4 +108,4 @@ function isSubsequence(str1, str2) {
 }
 
 // driver code
-console.log("isSubsequence: ", isSubsequence("abc", "abracadabra"))
+console.log("isSubsequence: ", isSubsequence("", "abracadabra"))
