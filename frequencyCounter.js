@@ -32,9 +32,9 @@ const same = (arr1, arr2) => {
 }
 
 // driver code
-// let test1 = [1, 4, 2, 2, 5];
-// let test2 = [16, 4, 25, 1, 9];
-// console.log(same (test1, test2));
+let test1 = [1, 4, 2, 2, 5];
+let test2 = [16, 4, 25, 1, 9];
+console.log("same: ", same (test1, test2));
 
 // ---------------------------------------------------------------------------------------------------------------------------
 // ---------------------------------------------------------------------------------------------------------------------------
@@ -102,4 +102,69 @@ const validAnagram = (str1, str2) => {
 
 // test driver code
 testData = ["iceman", "cinema"]
-console.log(validAnagram(testData[0], testData[1]))
+console.log("validAnagram: ", validAnagram(testData[0], testData[1]))
+
+// ---------------------------------------------------------------------------------------------------------------------------
+// ---------------------------------------------------------------------------------------------------------------------------
+
+// Task: Write a function called sameFrequency. Given two positive integers, 
+// find out if the two numbers have the same frequency of digits
+
+function sameFrequency(a, b) {
+    // good luck. Add any arguments you deem necessary.
+    let str1 = a.toString();
+    let str2 = b.toString();
+
+    if (str1.length !== str2.length) {
+        return false;
+    }
+    
+    let freq = {};
+    
+    for (let dgt of str1) {
+        freq[dgt] = ++freq[dgt] || 1;
+    }
+
+    for (let dgt of str2) {
+        if (dgt in freq) {
+            freq[dgt]--;
+        }
+        else {
+            return false;
+        }
+    }
+
+    return true;
+}
+
+//driver code
+console.log("sameFrequency: ", sameFrequency(245, 465));
+
+// ---------------------------------------------------------------------------------------------------------------------------
+// ---------------------------------------------------------------------------------------------------------------------------
+
+// Task: Implement a function called areThereDuplicates, which accepts 
+// a variable number of arguments, and checks whether there are any
+// duplicates.
+
+const areThereDuplicates = (...restParams) => {
+    if (restParams.length < 2) {
+        return false;
+    }
+
+    let freq = {};
+
+    for (let arg of restParams) {
+        if (arg in freq) {
+            return true;
+        }
+        else {
+            freq[arg] = 1;
+        }
+    }
+
+    return false;
+}
+
+// driver code
+console.log("areThereDuplicates: ", areThereDuplicates(1,3,4,5,6,8,23,4,2))
