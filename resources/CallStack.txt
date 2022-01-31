@@ -1,0 +1,3 @@
+It's a stack data structure
+Anytime a function is called, it is pushed to the top of the call stack
+When function returns, it is then popped from the top of the call stack

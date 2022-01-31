@@ -1,0 +1,18 @@
+Recursion - a process, that calls itself, on a changing scale
+
+Why?
+    It's everywhere (JSON.parse / JSON.stringify)
+    Object traversal algorithms
+    Present in complex data structures
+    Sometimes a cleaner approach, compared to iteration
+
+How?
+    1. Invoke the same function with a different input until the base case is reached
+    2. The base case - where the recursion stops
+
+Be careful of:
+    1. Not having a base case
+    2. Having wrong base case
+    3. Infinite loop
+    4. Not returning
+    5. Returning wrong thing

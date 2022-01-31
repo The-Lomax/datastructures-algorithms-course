@@ -1,0 +1,2 @@
+Helper Method Recursion - type of recursion that makes use of internal function 
+    to manipulate the result of the main function.
