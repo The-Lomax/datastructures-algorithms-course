@@ -1,0 +1,13 @@
+Sorting - process of arranging elements of unordered data structure in order
+
+Types:
+    BASIC:
+    1. Bubble     - sorting that works in a way where biggest elements are pushed to the top of the structure.
+                    Inefficient, avg time complexity O(n sq)
+    2. Selection  - sorting that works in a way where smallest elements are swapped with the first element.
+                    Inefficient, avg time complexity O(n sq)
+    3. Insertion  - sorting that works in a way where last elements are inserted into the right place.
+                    Inefficient, avg time complexity O(n sq)
+
+    INTERMEDIATE:
+    1. Merge      - sorting based on the fact that 0-1 element arrays are always sorted
