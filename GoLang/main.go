@@ -1,11 +1,10 @@
 package main
 
 import (
-	"datastructures-algorithm-course-golang/model"
+	"datastructures-algorithm-course-golang/permutations"
 	"fmt"
 )
 
 func main() {
-	var test model.SLinkedList
-	fmt.Println(test)
+	fmt.Println(permutations.GetPermutations("dog"))
 }

@@ -1,0 +1,10 @@
+permutations = all possible combinations of string
+number of permutations of string with length of n is n! = 1 * ... * n
+
+base case:
+    1. if there's only one character left, we add string to permutations array
+otherwise:
+    2. for each character in the string:
+        3.we swap it with the next one
+        4. we call permute with the next character set as beginning (sort of locking the previous characters)
+        5. swap back
